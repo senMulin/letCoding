@@ -4,6 +4,7 @@ import com.mulin.letCoding.tree.Node;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by mulin on 2018/8/17.
@@ -46,7 +47,63 @@ public class NAryTreePostorderTraversal {
         list.add(node.val);
     }
 
-    public static List<Integer> iteration(Node node) {
-        return new ArrayList<Integer>();
+    public static List<Integer> iteration(Node node, List<Integer> list) {
+
+        Stack<Tuple> stack = new Stack<Tuple>();
+
+        Tuple cur = new Tuple(node, 0);
+
+        Node last = null;
+
+        while (cur != null) {
+            stack.push(cur);
+
+            if (cur.node.children.size() > 0) {
+                cur = new Tuple(cur.node.children.get(0), 0);
+            } else {
+                cur = null;
+            }
+        }
+
+        while (!stack.isEmpty()) {
+
+            cur = stack.pop();
+            int childSize = cur.node.children.size();
+
+            if (childSize > cur.idx &&
+                    cur.node.children.get(childSize - 1) != last) {
+
+                cur.idx = cur.idx + 1;
+
+                stack.push(cur);
+
+                cur = new Tuple(cur.node.children.get(cur.idx), 0);
+                while (cur != null) {
+                    stack.push(cur);
+
+                    if (cur.node.children.size() > 0) {
+                        cur = new Tuple(cur.node.children.get(0), 0);
+                    } else {
+                        cur = null;
+                    }
+                }
+
+            } else {
+                list.add(cur.node.val);
+                last = cur.node;
+            }
+        }
+
+        return list;
+    }
+
+    static class Tuple {
+        public Node node;
+        public Integer idx;
+
+        public Tuple(Node node, Integer idx) {
+            this.node = node;
+            this.idx = idx;
+        }
     }
 }
