@@ -15,4 +15,13 @@ public class Node {
         val = _val;
         children = _children;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Node{");
+        sb.append("val=").append(val);
+        sb.append(", children=").append(children);
+        sb.append('}');
+        return sb.toString();
+    }
 }
