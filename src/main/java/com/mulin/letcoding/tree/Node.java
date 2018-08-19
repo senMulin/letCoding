@@ -1,4 +1,4 @@
-package com.mulin.letCoding.tree;
+package com.mulin.letcoding.tree;
 
 import java.util.List;
 

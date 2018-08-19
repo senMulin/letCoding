@@ -1,6 +1,6 @@
-package com.mulin.letCoding.tree.easy;
+package com.mulin.letcoding.tree.easy;
 
-import com.mulin.letCoding.tree.Node;
+import com.mulin.letcoding.tree.Node;
 
 import java.util.ArrayList;
 import java.util.List;

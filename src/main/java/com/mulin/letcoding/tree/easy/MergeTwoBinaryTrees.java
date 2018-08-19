@@ -1,6 +1,6 @@
-package com.mulin.letCoding.tree.easy;
+package com.mulin.letcoding.tree.easy;
 
-import com.mulin.letCoding.tree.TreeNode;
+import com.mulin.letcoding.tree.TreeNode;
 
 /**
  * Created by mulin on 2018/8/13.
@@ -12,17 +12,17 @@ import com.mulin.letCoding.tree.TreeNode;
 
  输入:
  Tree 1                     Tree 2
- 1                         2
- / \                       / \
- 3   2                     1   3
- /                           \   \
+     1                         2
+    / \                       / \
+   3   2                     1   3
+  /                           \   \
  5                             4   7
  输出:
  合并后的树:
- 3
- / \
- 4   5
- / \   \
+     3
+    / \
+   4   5
+  / \   \
  5   4   7
  注意: 合并必须从两个树的根节点开始。
  */

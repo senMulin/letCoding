@@ -1,6 +1,6 @@
-package com.mulin.letCoding.tree.easy;
+package com.mulin.letcoding.tree.easy;
 
-import com.mulin.letCoding.tree.TreeNode;
+import com.mulin.letcoding.tree.TreeNode;
 
 /**
  * Created by mulin on 2018/8/15.
@@ -11,17 +11,17 @@ import com.mulin.letCoding.tree.TreeNode;
 
  输入：
 
- 4
- /   \
- 2     7
- / \   / \
+      4
+    /   \
+   2     7
+  / \   / \
  1   3 6   9
  输出：
 
- 4
- /   \
- 7     2
- / \   / \
+      4
+    /   \
+   7     2
+  / \   / \
  9   6 3   1
  */
 public class InvertBinaryTree {

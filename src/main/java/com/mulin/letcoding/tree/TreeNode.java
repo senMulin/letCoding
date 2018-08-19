@@ -1,4 +1,4 @@
-package com.mulin.letCoding.tree;
+package com.mulin.letcoding.tree;
 
 /**
  * Created by mulin on 2018/8/13.

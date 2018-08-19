@@ -1,6 +1,6 @@
-package com.mulin.letCoding.tree.easy;
+package com.mulin.letcoding.tree.easy;
 
-import com.mulin.letCoding.tree.TreeNode;
+import com.mulin.letcoding.tree.TreeNode;
 
 /**
  * Created by mulin on 2018/8/16.
