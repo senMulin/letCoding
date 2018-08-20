@@ -56,6 +56,30 @@ public class TrimABinarySearchTree {
         return trim(root, null, L, R);
     }
 
+    /**
+     * 最简洁的解法
+     * @param node
+     * @param L
+     * @param R
+     * @return
+     */
+    public static TreeNode perfect(TreeNode node, int L, int R) {
+        if (null == node) {
+            return null;
+        }
+
+        if (node.val < L) {
+            return perfect(node.right, L, R);
+        } else if (node.val > R) {
+            return perfect(node.left, L, R);
+        } else {
+            node.left = perfect(node.left, L, R);
+            node.right = perfect(node.right, L, R);
+        }
+
+        return node;
+    }
+
     public static TreeNode trim(TreeNode node, TreeNode parent, int L, int R) {
         if (node == null) {
             return  null;
