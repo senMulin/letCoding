@@ -8,22 +8,25 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * Created by mulin on 2018/8/17.
- * 给定一个N叉树，返回其节点值的后序遍历。
+ * Created by mulin on 2018/8/19.
+
+ 给定一个N叉树，返回其节点值的前序遍历。
 
  例如，给定一个 3叉树 :
 
-        1
-     /  |  \
-    3   2  4
-   / \
-  5   6
+       1
+    /  |  \
+   3   2  4
+  / \
+ 5   6
 
- 返回其后序遍历: [5,6,3,2,4,1]
+ 返回其前序遍历: [1,3,5,6,2,4]。
+
  */
-public class NAryTreePostOrderTraversal {
+public class NArytreePreOrderTraversal {
 
-    public List<Integer> postorder(Node root) {
+    public List<Integer> preorder(Node root) {
+
         List<Integer> list = new ArrayList<Integer>();
 
         recursive(root, list);
@@ -31,32 +34,32 @@ public class NAryTreePostOrderTraversal {
         return list;
     }
 
-    /**
-     * 递归解法
-     * @param node
-     * @param list
-     */
-    public static void recursive(Node node, List<Integer> list) {
-        if (null == node) {
+
+    public static void recursive(Node parent, List<Integer> list) {
+        if (null == parent) {
             return;
         }
 
-        for (Node n : node.children) {
-            recursive(n, list);
-        }
+        list.add(parent.val);
 
-        list.add(node.val);
+        for (Node child : parent.children) {
+            recursive(child, list);
+        }
     }
 
-    public static void iteration(Node node, List<Integer> list) {
+    public static void iteration(Node parent, List<Integer> list) {
+        if (null == parent) {
+            return;
+        }
+
         Stack<Tuple> stack = new Stack<Tuple>();
 
-        Tuple cur = new Tuple(node, 0);
-
+        Tuple cur = new Tuple(parent, 0);
         Node last = null;
 
-        while (cur != null) {
+        while (null != cur) {
             stack.push(cur);
+            list.add(cur.node.val);
 
             if (cur.node.children.size() > 0) {
                 cur = new Tuple(cur.node.children.get(0), 0);
@@ -66,20 +69,19 @@ public class NAryTreePostOrderTraversal {
         }
 
         while (!stack.isEmpty()) {
-
             cur = stack.pop();
-            int childSize = cur.node.children.size();
 
-            if (childSize > cur.idx &&
-                    cur.node.children.get(childSize - 1) != last) {
+            int size = cur.node.children.size();
+            if (size > cur.idx && last != cur.node.children.get(size - 1)) {
 
                 cur.idx = cur.idx + 1;
-
                 stack.push(cur);
 
                 cur = new Tuple(cur.node.children.get(cur.idx), 0);
+
                 while (cur != null) {
                     stack.push(cur);
+                    list.add(cur.node.val);
 
                     if (cur.node.children.size() > 0) {
                         cur = new Tuple(cur.node.children.get(0), 0);
@@ -87,13 +89,10 @@ public class NAryTreePostOrderTraversal {
                         cur = null;
                     }
                 }
-
             } else {
-                list.add(cur.node.val);
                 last = cur.node;
             }
         }
-
     }
 
     public static void main(String[] args) {
