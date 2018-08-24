@@ -64,6 +64,12 @@ public class LowestCommonAncestorOfABinarySearchTree {
         return result;
     }
 
+    /**
+     * 找出根节点到该节点的路径
+     * @param root
+     * @param val
+     * @return
+     */
     public static List<TreeNode> path(TreeNode root, int val) {
         List<TreeNode> list = new ArrayList();
         TreeNode node = root;
