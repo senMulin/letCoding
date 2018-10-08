@@ -27,7 +27,7 @@ public class BestTimeToBuyAndSellStockWithCooldown {
         for (int p : prices) {
             preBuy = buy;
 
-            buy = Math.max(preSell - p, preBuy);
+              buy = Math.max(preSell - p, preBuy);
 
             preSell = sell;
 
